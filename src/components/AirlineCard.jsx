@@ -17,7 +17,6 @@ function AirlineCard({ airline }) {
   } = airline;
   const photoURL = "https://www.kayak.com/" + logoURL;
 
-  console.log(hover)
 
   return (
     <div
@@ -49,7 +48,7 @@ function AirlineCard({ airline }) {
         {
           hover?
           <div className='cardText'>
-          <p style={{ margin:'2px',fontSize:'14px' }}>{code}</p>
+          <p style={{ margin:'2px',fontSize:'14px' }}>{alliance=='none'?'':alliance}</p>
           <p style={{ margin:'2px',fontSize:'14px' }}>{phone}</p>
           <p style={{ margin:'2px',fontSize:'14px', inlineSize: "130px", overflowWrap: "break-word" }}>
             {site}
