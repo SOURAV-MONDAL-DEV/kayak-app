@@ -4,9 +4,9 @@ import AirlineCard from "../components/AirlineCard";
 
 function Airlines() {
   const [allAirlines, setAllAirlines] = useState([]);
-//   const [fValue, setFValue] = useState([])
+  const [newData, setNewData] = useState([]);
 
-  const cValue = [];
+  const [cValue, setCValue] = useState([]);
 
   useEffect(() => {
     fetchJsonp(
@@ -18,55 +18,89 @@ function Airlines() {
       .then((res) => res.json())
       .then((data) => {
         setAllAirlines(data);
+        setNewData(data);
       });
   }, []);
 
-  const filterData = () => {
-    console.log(cValue);
-    // continue -----------------------------------------------------------------------------------
-  }
+  const matchData = (cv) => {
+    let rv;
 
+    cValue.forEach((fval) => {
+      if (cv?.alliance == fval) {
+        rv = cv;
+      } else {
+        return;
+      }
+    });
+
+    return rv;
+  };
+
+  const filterData = () => {
+      if (cValue.length > 0) {
+      const result = allAirlines.filter(matchData);
+      setNewData(result);
+    } else {
+        console.log('ok')
+      setNewData(allAirlines);
+    }
+
+  };
 
   const handleCheak = (e) => {
     const name = e.target.name;
     if (e.target.checked) {
-
-        cValue.push(name)
-        filterData()
-        
-      } else {
-
-        const index = cValue.indexOf(name);
-        if (index > -1) {
-            cValue.splice(index, 1);
-          }
-          filterData();
+      cValue.push(name);
+      filterData();
+    } else {
+      const index = cValue.indexOf(name);
+      if (index > -1) {
+        cValue.splice(index, 1);
+        filterData();
       }
-      
-  }
+    }
+  };
 
   return (
     <div style={{ margin: "60px 83px" }}>
       <h1 style={{ fontSize: "36px" }}>Airlines</h1>
       <p style={{ fontWeight: "700", fontSize: "20px" }}>Filter by Alliances</p>
 
-      <div style={{display:'flex', marginBottom:'50px'}}>
-        <div  style={{marginRight:'15px'}}>
-          <input onChange={handleCheak} type="checkbox" id="coding" name="OW" value="coding" />
+      <div style={{ display: "flex", marginBottom: "50px" }}>
+        <div style={{ marginRight: "15px" }}>
+          <input
+            onChange={handleCheak}
+            type="checkbox"
+            id="coding"
+            name="OW"
+            value="coding"
+          />
           <label for="coding">Oneworld</label>
         </div>
-        <div style={{marginRight:'15px'}}>
-          <input onChange={handleCheak}  type="checkbox" id="coding" name="ST" value="coding" />
+        <div style={{ marginRight: "15px" }}>
+          <input
+            onChange={handleCheak}
+            type="checkbox"
+            id="coding"
+            name="ST"
+            value="coding"
+          />
           <label for="coding">Sky Team</label>
         </div>
-        <div style={{marginRight:'15px'}}>
-          <input onChange={handleCheak} type="checkbox" id="coding" name="SA" value="coding" />
+        <div style={{ marginRight: "15px" }}>
+          <input
+            onChange={handleCheak}
+            type="checkbox"
+            id="coding"
+            name="SA"
+            value="coding"
+          />
           <label for="coding">Star Allience</label>
         </div>
       </div>
 
       <div className="airlineContainer" style={{ gap: "42px" }}>
-        {allAirlines.map((airline) => (
+        {newData.map((airline) => (
           <AirlineCard key={airline?.code} airline={airline}></AirlineCard>
         ))}
       </div>
