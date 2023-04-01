@@ -13,12 +13,28 @@ code {
 }
 
 
+.airlineContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr)!important;
+ }
 
-
-.cardText {
-  display: none;
+@media only screen and (max-width: 650px) {
+  .airlineContainer {
+   grid-template-columns: repeat(1, 1fr)!important;
+  }
 }
-
-.card:hover + .cardText {
-  display: block;
+@media only screen and (min-width: 650px) {
+  .airlineContainer {
+   grid-template-columns: repeat(2, 1fr)!important;
+  }
+}
+@media only screen and (min-width: 920px) {
+  .airlineContainer {
+   grid-template-columns: repeat(3, 1fr)!important;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .airlineContainer {
+   grid-template-columns: repeat(4, 1fr)!important;
+  }
 }

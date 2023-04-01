@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 function AirlineCard({ airline }) {
-  console.log("paici", airline);
+
+  const[hover, setHover] = useState(false);
 
   const {
     __clazz,
@@ -16,9 +17,13 @@ function AirlineCard({ airline }) {
   } = airline;
   const photoURL = "https://www.kayak.com/" + logoURL;
 
+  console.log(hover)
+
   return (
     <div
-        className="card"
+      onMouseOver={()=>setHover(true)}
+      onMouseLeave={()=>setHover(false)}
+      className="card"
       style={{
         display: "flex",
         gap: "15px",
@@ -41,13 +46,18 @@ function AirlineCard({ airline }) {
       </div>
       <div style={{}}>
         <p style={{ fontWeight: "700" }}>{name}</p>
-        <div className='cardText'>
-          <p>{code}</p>
-          <p>{phone}</p>
-          <p style={{ inlineSize: "130px", overflowWrap: "break-word" }}>
+        {
+          hover?
+          <div className='cardText'>
+          <p style={{ margin:'2px',fontSize:'14px' }}>{code}</p>
+          <p style={{ margin:'2px',fontSize:'14px' }}>{phone}</p>
+          <p style={{ margin:'2px',fontSize:'14px', inlineSize: "130px", overflowWrap: "break-word" }}>
             {site}
           </p>
         </div>
+        :
+        <></>
+        }
       </div>
     </div>
   );

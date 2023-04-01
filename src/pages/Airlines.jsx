@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import fetchJsonp from 'fetch-jsonp';
-import AirlineCard from '../components/AirlineCard'
+import AirlineCard from '../components/AirlineCard';
 
 function Airlines() {
 
@@ -27,7 +27,7 @@ function Airlines() {
         <div>
             <p>filter</p>
         </div>
-        <div style={{display:'grid', gridTemplateColumns:'repeat(4, 1fr)', gap:'42px'}} >
+        <div className='airlineContainer' style={{ gap:'42px'}} >
             {
                 allAirlines.map(airline => <AirlineCard
                     key={airline?.code}
