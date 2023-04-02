@@ -34,6 +34,7 @@ function AirlineCard({ airline }) {
         border: "1px solid #D4D4D4",
         borderRadius: "2px",
         boxShadow: "0px 2px 6px 1px #D4D4D4",
+        margin:'auto auto'
       }}
     >
       <div>

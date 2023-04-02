@@ -62,7 +62,7 @@ function Airlines() {
   };
 
   return (
-    <div style={{ margin: "60px 83px" }}>
+    <div className="airlines" style={{ margin: "60px 83px" }}>
       <h1 style={{ fontSize: "36px" }}>Airlines</h1>
       <p style={{ fontWeight: "700", fontSize: "20px" }}>Filter by Alliances</p>
 
@@ -71,31 +71,31 @@ function Airlines() {
           <input
             onChange={handleCheak}
             type="checkbox"
-            id="coding"
+            id="OW"
             name="OW"
             value="coding"
           />
-          <label for="coding">Oneworld</label>
+          <label for="OW">Oneworld</label>
         </div>
         <div style={{ marginRight: "15px" }}>
           <input
             onChange={handleCheak}
             type="checkbox"
-            id="coding"
+            id="ST"
             name="ST"
             value="coding"
           />
-          <label for="coding">Sky Team</label>
+          <label for="ST">Sky Team</label>
         </div>
         <div style={{ marginRight: "15px" }}>
           <input
             onChange={handleCheak}
             type="checkbox"
-            id="coding"
+            id="SA"
             name="SA"
             value="coding"
           />
-          <label for="coding">Star Allience</label>
+          <label for="SA">Star Allience</label>
         </div>
       </div>
 
